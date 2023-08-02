@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:chat_app/Widgets/userimgpicker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,6 +19,7 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   @override
+  var enteredUserName = '';
   var enteredEmail = '';
   var enteredPassword = '';
   final _formKey = GlobalKey<FormState>();
@@ -68,7 +70,7 @@ class _AuthPageState extends State<AuthPage> {
             .collection('users')
             .doc('${userCredentials.user!.uid}')
             .set({
-          'username': 'to be done....',
+          'username': enteredUserName,
           'email': enteredEmail,
           'imageURL': imageURL
         });
@@ -117,6 +119,24 @@ class _AuthPageState extends State<AuthPage> {
                           UserImagePicker(
                             onPickedImage: (pickedImage) {
                               _selectedImage = pickedImage;
+                            },
+                          ),
+                        if (!isLogin)
+                          TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Username',
+                              hintText: 'Enter Userame',
+                            ),
+                            keyboardType: TextInputType.name,
+                            autocorrect: false,
+                            textCapitalization: TextCapitalization.none,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter a valid UserName";
+                              }
+                            },
+                            onSaved: (value) {
+                              enteredUserName = value!;
                             },
                           ),
                         TextFormField(

@@ -1,4 +1,7 @@
+import 'package:chat_app/Widgets/Chat_Messages.dart';
+import 'package:chat_app/Widgets/New_Messages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -11,11 +14,25 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  void setupPushNotifications() async {
+    final fcm = FirebaseMessaging.instance;
+    await fcm.requestPermission();
+
+    fcm.subscribeToTopic('chat');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    setupPushNotifications();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Chat"),
+        title: Text("FireChat"),
         actions: [
           IconButton(
               onPressed: () {
@@ -27,7 +44,14 @@ class _ChatScreenState extends State<ChatScreen> {
               ))
         ],
       ),
-      body: Center(child: Text("This is a chat app")),
+      body: Column(
+        children: [
+          Expanded(child: ChatMessages()),
+          Card(
+            child: NewMessage(),
+          )
+        ],
+      ),
     );
   }
 }

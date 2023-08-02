@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "80433430503",
+    "project_id": "chat-app-cddba",
+    "storage_bucket": "chat-app-cddba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80433430503:android:ed7c4857ca8223c5674742",
+        "android_client_info": {
+          "package_name": "com.example.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80433430503-scb5fedjborbi98dugo8rpren372uu8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4i0QnAihFBQ77U9cKlIjjidoHiTtmTmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80433430503-scb5fedjborbi98dugo8rpren372uu8f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80433430503-c5hq2ikdbmq2kh37hd5id5bajpnj779a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

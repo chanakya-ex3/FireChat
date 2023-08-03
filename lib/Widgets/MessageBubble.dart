@@ -29,7 +29,7 @@ class _MessageBubbleState extends State<MessageBubble> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: widget.isMe
+      children: !widget.isMe
           ? [
               Padding(
                 padding: const EdgeInsets.only(right: 10),

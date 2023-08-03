@@ -16,7 +16,7 @@ class _NewMessageState extends State<NewMessage> {
 
   @override
   void sendMessage() async {
-    // FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
     var message = _messagecontroller.text;
     if (message == null || message.length == 0) {
       return;
